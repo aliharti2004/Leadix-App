@@ -1,0 +1,24 @@
+/* CRITICAL: Orange gradient for active navigation items */
+/* This file MUST override all Tailwind utility classes */
+
+nav a.btn-gradient,
+nav .btn-gradient,
+a[href*="dashboard"].btn-gradient,
+a[href*="deals"].btn-gradient,
+a[href*="invoices"].btn-gradient,
+a[href*="cashflow"].btn-gradient,
+a[href*="settings"].btn-gradient,
+a[href*="contacts"].btn-gradient,
+a[href*="reports"].btn-gradient,
+.btn-gradient.flex {
+    background: linear-gradient(135deg, #ff7300 0%, #ff9500 100%) !important;
+    background-color: #ff7300 !important;
+    background-image: linear-gradient(135deg, #ff7300 0%, #ff9500 100%) !important;
+}
+
+/* Fallback for buttons */
+button.btn-gradient,
+.btn-gradient {
+    background: linear-gradient(135deg, #ff7300 0%, #ff9500 100%) !important;
+    background-color: #ff7300 !important;
+}
