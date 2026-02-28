@@ -1,63 +1,452 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# LeadiX CRM
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+LeadiX est une application CRM moderne construite avec **Laravel 12** pour gérer l’ensemble du cycle commercial et financier d’une organisation, de la prospection jusqu’au paiement.
 
-## About Laravel
+**Cycle métier principal :**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Lead → Deal → Invoice → Payment**
+**(Prospect) → (Opportunité) → (Facture) → (Paiement)**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+L’application repose sur une architecture **multi-tenant**, garantissant l’isolation complète des données entre les différentes organisations.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Aperçu
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+LeadiX a été conçu pour centraliser et simplifier la gestion commerciale d’une entreprise grâce à :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* la gestion des **leads**
+* le suivi du **pipeline de vente**
+* la création et le suivi des **factures**
+* la gestion de la **trésorerie**
+* les **notifications en temps réel**
+* le **contrôle d’accès par rôles**
+* les **rapports et indicateurs de performance**
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Fonctionnalités principales
 
-### Premium Partners
+* **Gestion des leads** : création, qualification, suivi et conversion
+* **Pipeline de ventes** : gestion visuelle des opportunités avec Kanban drag & drop
+* **Gestion des deals** : suivi des étapes commerciales, statut gagné/perdu
+* **Facturation** : création de factures, génération PDF, suivi des statuts
+* **Paiements** : enregistrement et suivi des paiements reçus
+* **Cashflow** : tableau de bord de trésorerie avec revenus, dépenses et projections
+* **Notifications** : alertes pour les événements importants
+* **Multi-tenancy** : séparation des données par organisation
+* **RBAC** : rôles `admin`, `sales`, `finance`
+* **Rapports** : KPIs, analyses de performance et exports
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## Stack technologique
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Backend
 
-## Code of Conduct
+* **PHP 8.2+**
+* **Laravel 12**
+* **MySQL / SQLite**
+* **Composer**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Frontend
 
-## Security Vulnerabilities
+* **Blade**
+* **Tailwind CSS 4**
+* **Alpine.js 3.13**
+* **Vite 7**
+* **SortableJS 1.15**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Packages principaux
 
-## License
+* `laravel/breeze` — authentification
+* `barryvdh/laravel-dompdf` — génération PDF des factures
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# Leadix-App
->>>>>>> 876bef9a4b40fe93e5330a277cae983e4c631535
+---
+
+## Architecture
+
+LeadiX suit une architecture **MVC** enrichie par une couche de services métier et des observers.
+
+### Couches principales
+
+* **Views** : templates Blade et composants réutilisables
+* **Controllers** : gestion des requêtes HTTP, validation et orchestration
+* **Services** : logique métier complexe
+* **Models** : ORM Eloquent et relations métier
+* **Database** : migrations, seeders et factories
+* **Observers** : automatisation des actions métier
+* **Notifications** : alertes en base de données
+
+### Flux général
+
+**Utilisateur → Navigateur → Routes → Middleware Auth/Tenancy → Controllers → Services → Models → Base de données → Views / Notifications**
+
+---
+
+## Structure du projet
+
+```text
+leadix-app/
+├── app/
+│   ├── Http/Controllers/
+│   ├── Models/
+│   ├── Notifications/
+│   ├── Observers/
+│   ├── Services/
+│   ├── Traits/
+│   └── Providers/
+├── database/
+│   ├── migrations/
+│   ├── seeders/
+│   └── factories/
+├── resources/
+│   ├── views/
+│   ├── css/
+│   └── js/
+├── routes/
+├── public/
+└── storage/
+```
+
+---
+
+## Modules fonctionnels
+
+### 1. Dashboard
+
+* Tableau de bord par rôle
+* KPIs commerciaux et financiers
+* activités récentes
+* vues de synthèse
+
+### 2. Lead Management
+
+* création et qualification de leads
+* modification et suivi
+* conversion en opportunités
+
+### 3. Deal Management
+
+* pipeline Kanban
+* drag & drop entre étapes
+* marquage `Won` / `Lost`
+* génération automatique de facture si deal gagné
+
+### 4. Invoice Management
+
+* gestion des factures
+* suivi des statuts
+* génération PDF
+* gestion des paiements et retards
+
+### 5. Cashflow
+
+* revenus vs dépenses
+* évolution de la trésorerie
+* prévisions financières
+
+### 6. Reports
+
+* rapports de ventes
+* rapports financiers
+* performance par utilisateur
+* exports CSV/PDF
+
+### 7. Team Management
+
+* invitation de membres
+* gestion des rôles
+* administration d’équipe
+
+### 8. Notification System
+
+* notifications temps réel
+* compteur non lu
+* marquage comme lu
+* alertes sonores et visuelles
+
+---
+
+## Système multi-tenant
+
+LeadiX implémente un modèle **multi-tenant** pour garantir qu’un utilisateur ne puisse accéder qu’aux données de son organisation.
+
+Le trait `BelongsToOrganization` applique :
+
+* un **global scope** sur les modèles concernés
+* l’attribution automatique du `organization_id`
+* le filtrage automatique des requêtes par organisation
+
+### Modèles concernés
+
+* Lead
+* Deal
+* Invoice
+* Contact
+* Activity
+* Expense
+
+---
+
+## Contrôle d’accès (RBAC)
+
+LeadiX utilise trois rôles principaux :
+
+### Admin
+
+* accès complet à toute l’application
+* gestion d’équipe
+* accès cashflow, settings, reports
+
+### Sales
+
+* accès aux leads, deals, dashboard, contacts
+* pas d’accès aux invoices ni au cashflow
+
+### Finance
+
+* accès aux invoices, cashflow, reports, dashboard
+* pas d’accès aux leads ni aux deals
+
+---
+
+## Flux métier principal
+
+### Lead → Deal
+
+1. Un lead est créé
+2. Il est qualifié
+3. Il est converti en deal
+4. Une notification est envoyée
+
+### Deal → Invoice
+
+1. Le deal progresse dans le pipeline
+2. Lorsqu’il est marqué comme gagné
+3. Une facture est générée automatiquement
+4. Des notifications sont envoyées aux équipes concernées
+
+### Invoice → Payment
+
+1. La facture est envoyée
+2. Le paiement est reçu et enregistré
+3. Le statut est mis à jour
+4. En cas de retard, une notification d’overdue est déclenchée
+
+---
+
+## Services métier
+
+### `DealService`
+
+Responsable de :
+
+* la logique de transition des étapes
+* les probabilités de closing
+* les statistiques commerciales
+* les règles métier liées aux deals
+
+### `FilterService`
+
+Responsable de :
+
+* la construction de filtres avancés
+* les requêtes dynamiques
+* l’application de scopes personnalisés
+
+### `InvoicePdfService`
+
+Responsable de :
+
+* la génération des PDFs
+* le formatage des montants
+* les templates de factures
+
+---
+
+## Notifications
+
+Le système de notifications couvre notamment :
+
+* création de lead
+* création de deal
+* deal gagné ou perdu
+* changement d’étape
+* création de facture
+* paiement reçu
+* facture en retard
+
+Chaque notification peut être :
+
+* stockée en base
+* affichée en interface
+* marquée comme lue
+* accompagnée d’un son ou d’un toast
+
+---
+
+## Interface utilisateur
+
+LeadiX adopte un design system moderne appelé **Dark Nebula** :
+
+* mode sombre par défaut
+* glassmorphism
+* dégradés orange / violet
+* micro-animations
+* interface responsive
+* boards Kanban interactifs
+
+### Composants réutilisables
+
+* alert
+* modal
+* stat-card
+* table
+* form-input
+* kanban-card
+
+---
+
+## Installation
+
+### 1. Cloner le projet
+
+```bash
+git clone https://github.com/aliharti2004/Leadix-App.git
+cd Leadix-App
+```
+
+### 2. Installer les dépendances PHP
+
+```bash
+composer install
+```
+
+### 3. Installer les dépendances frontend
+
+```bash
+npm install
+```
+
+### 4. Configurer l’environnement
+
+```bash
+copy .env.example .env
+php artisan key:generate
+```
+
+### 5. Configurer la base de données
+
+Modifie le fichier `.env` avec tes paramètres MySQL ou SQLite.
+
+### 6. Lancer les migrations et seeders
+
+```bash
+php artisan migrate --seed
+```
+
+### 7. Démarrer le projet
+
+```bash
+php artisan serve
+npm run dev
+```
+
+---
+
+## Routes principales
+
+### Authentification
+
+* `GET /login`
+* `POST /login`
+* `GET /register`
+* `POST /register`
+* `POST /logout`
+
+### Dashboard
+
+* `GET /dashboard`
+
+### Leads
+
+* `GET /leads`
+* `POST /leads`
+* `POST /leads/{id}/convert`
+
+### Deals
+
+* `GET /deals/kanban`
+* `POST /deals/{id}/update-stage`
+* `POST /deals/{id}/mark-won`
+* `POST /deals/{id}/mark-lost`
+
+### Invoices
+
+* `GET /invoices/kanban`
+* `GET /invoices/{id}/pdf`
+* `POST /invoices/{id}/update-status`
+
+### Cashflow
+
+* `GET /cashflow`
+
+### Reports
+
+* `GET /reports`
+
+### Notifications
+
+* `GET /notifications/unread-count`
+* `GET /notifications/latest`
+* `POST /notifications/{id}/read`
+
+---
+
+## Déploiement
+
+L’application est prévue pour un déploiement sur **Railway.app** avec :
+
+* **Nixpacks**
+* **MySQL** en production
+* **Vite** pour la compilation des assets
+* **caching Laravel** pour les performances
+
+---
+
+## Forces de l’architecture
+
+* architecture claire et modulaire
+* séparation nette des responsabilités
+* système multi-tenant robuste
+* contrôle d’accès simple et efficace
+* forte automatisation via observers
+* interface moderne et premium
+* extensibilité pour de futurs modules
+
+---
+
+## Extensibilité
+
+L’architecture permet facilement :
+
+* l’ajout de nouveaux rôles
+* de nouveaux types de notifications
+* de nouveaux modules (devis, produits, abonnements, etc.)
+* des intégrations API / webhooks
+* des personnalisations par organisation
+
+---
+
+## Version
+
+* **Nom** : LeadiX CRM
+* **Version** : `v1.0`
+* **Date de documentation** : `21 janvier 2026`
+
+---
+
+## Auteur
+
+**Ali Harti**
